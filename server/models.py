@@ -44,8 +44,8 @@ class Questionnaire(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer(), db.ForeignKey("users.id"))
     question_id = db.Column(db.Integer(), db.ForeignKey("questions.id"))
     score = db.Column(db.Integer())
-    created_on = db.Column(db.DateTime(timezone=True), server_default = db.func.now())
-    updated_on = db.Column(db.DateTime(timezone=True), server_default = db.func.now(), server_onupdate = db.func.now())
+    created_on = db.Column(db.DateTime(), server_default = db.func.now())
+    updated_on = db.Column(db.DateTime(), server_default = db.func.now(), server_onupdate = db.func.now())
 
     # relationships
     user = db.relationship("User", back_populates = "questionnaires")
