@@ -21,7 +21,6 @@ def index():
     return '<h1>Project Server</h1>'
 
 class Signup(Resource):
-
     def post(self):
         json = request.get_json()
         try:
@@ -40,7 +39,7 @@ class Signup(Resource):
             user_response = jsonify(user.to_dict())
             return make_response(user_response, 201)
         except IntegrityError:
-            return make_response({"error": "Database relational integrity error."}, 422)
+            return make_response({"error": "Database relational integrity error"}, 422)
         except ValueError:
             return make_response({"error": "User information value invalid"}, 422)
 
@@ -56,6 +55,24 @@ class CheckSession(Resource):
             return make_response(user_response, 200)
         
         return make_response({"error": "Unauthorized"}, 401)
+    
+class Login(Resource):
+    def post(self):
+        try:
+            username = request.get_json().get("username")
+            user = User.query.filter(User.username == username).first()
+            session["user_id"] = user.id
+            user_response = jsonify(user.to_dict())
+            return make_response(user_response, 200)
+        except:
+            return make_response({"error": "Unauthorized username"}, 401)
+        
+class Logout(Resource):
+    def delete(self):
+        if session["user_id"]:
+            session["user_id"] == None
+            return make_response({"message": "204: No Content"}, 204)
+        return make_response({"error": "User not logged in"}, 401)
 
 class Questions(Resource):
     def get(self):
@@ -70,9 +87,9 @@ class Users(Resource):
 
     # update user information
     def patch(self):
-        user = db.session.get(User, session["user_id"])
+        user = User.query.filter(User.id == session["user_id"]).first()
         if not user:
-            return make_response({"error": "User not found."}, 404)
+            return make_response({"error": "User not found"}, 404)
         user_data = request.get_json()
         try:
             user.username = user_data.get("username")
@@ -82,22 +99,24 @@ class Users(Resource):
             user_response = jsonify(user.to_dict())
             return make_response(user_response, 201)
         except IntegrityError:
-            return make_response({"error": "Database relational integrity error."}, 422)
+            return make_response({"error": "Database relational integrity error"}, 422)
         except ValueError:
             return make_response({"error": "User information value invalid"}, 422)
 
     # delete user and all their data
     def delete(self):
-        user = db.session.get(User, session["user_id"])
+        user = User.query.filter(User.id == session["user_id"]).first()
         if not user:
-            return make_response({"error": "User not found."}, 404)
+            return make_response({"error": "User not found"}, 404)
         db.session.delete(user)
         db.session.commit()
 
-        return make_response({"message": "No content"}, 204)
+        return make_response({"message": "204: No content"}, 204)
 
 api.add_resource(Signup, "/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/check_session", endpoint = "check_session")
+api.add_resource(Login, "/login", endpoint = "login")
+api.add_resource(Logout, "/logout", endpoint = "logout")
 api.add_resource(Questions, "/questions", endpoint = "questions")
 api.add_resource(Users, "/users", endpoint = "users")
 
