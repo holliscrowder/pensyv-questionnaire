@@ -57,7 +57,15 @@ class CheckSession(Resource):
         
         return make_response({"error": "Unauthorized"}, 401)
 
-    
+class Questions(Resource):
+    def get(self):
+        # gather all questions
+        questions = [question.to_dict() for question in Question.query.all()]
+
+        # return questions
+        questions_response = jsonify(questions)
+        return make_response(questions_response, 200)
+
 api.add_resource(Signup, "/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/check_session", endpoint = "check_session")
 
