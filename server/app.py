@@ -65,10 +65,41 @@ class Questions(Resource):
         # return questions
         questions_response = jsonify(questions)
         return make_response(questions_response, 200)
+    
+class Users(Resource):
+
+    # update user information
+    def patch(self):
+        user = db.session.get(User, session["user_id"])
+        if not user:
+            return make_response({"error": "User not found."}, 404)
+        user_data = request.get_json()
+        try:
+            user.username = user_data.get("username")
+            user.email = user_data.get("email")
+            db.session.add(user)
+            db.session.commit()
+            user_response = jsonify(user.to_dict())
+            return make_response(user_response, 201)
+        except IntegrityError:
+            return make_response({"error": "Database relational integrity error."}, 422)
+        except ValueError:
+            return make_response({"error": "User information value invalid"}, 422)
+
+    # delete user and all their data
+    def delete(self):
+        user = db.session.get(User, session["user_id"])
+        if not user:
+            return make_response({"error": "User not found."}, 404)
+        db.session.delete(user)
+        db.session.commit()
+
+        return make_response({"message": "No content"}, 204)
 
 api.add_resource(Signup, "/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/check_session", endpoint = "check_session")
 api.add_resource(Questions, "/questions", endpoint = "questions")
+api.add_resource(Users, "/users", endpoint = "users")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
