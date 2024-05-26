@@ -13,9 +13,7 @@ from config import app, db, api
 # Add your model imports
 from models import User, Question, Questionnaire
 
-
 # Views go here!
-
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'
@@ -38,6 +36,8 @@ class Signup(Resource):
             # return user info
             user_response = jsonify(user.to_dict())
             return make_response(user_response, 201)
+        
+        # check for errors
         except IntegrityError:
             return make_response({"error": "Database relational integrity error"}, 422)
         except ValueError:
@@ -59,22 +59,32 @@ class CheckSession(Resource):
 class Login(Resource):
     def post(self):
         try:
+            # set session ID
             username = request.get_json().get("username")
             user = User.query.filter(User.username == username).first()
             session["user_id"] = user.id
+
+            # return user info
             user_response = jsonify(user.to_dict())
             return make_response(user_response, 200)
+        
+        # check for errors
         except:
             return make_response({"error": "Unauthorized username"}, 401)
         
 class Logout(Resource):
     def delete(self):
+        # reset session ID
         if session["user_id"]:
             session["user_id"] == None
+
+            # return empty response
             return make_response({"message": "204: No Content"}, 204)
         return make_response({"error": "User not logged in"}, 401)
 
 class Questions(Resource):
+    
+    # retrieve all questions
     def get(self):
         # gather all questions
         questions = [question.to_dict() for question in Question.query.all()]
@@ -87,16 +97,22 @@ class Users(Resource):
 
     # update user information
     def patch(self):
+        # find user being updated
         user = User.query.filter(User.id == session["user_id"]).first()
+        
         if not user:
             return make_response({"error": "User not found"}, 404)
+        
         user_data = request.get_json()
         try:
+            # update user info
             user.username = user_data.get("username")
             user.email = user_data.get("email")
             db.session.add(user)
             db.session.commit()
             user_response = jsonify(user.to_dict())
+
+            # return updated user info
             return make_response(user_response, 201)
         except IntegrityError:
             return make_response({"error": "Database relational integrity error"}, 422)
@@ -105,12 +121,16 @@ class Users(Resource):
 
     # delete user and all their data
     def delete(self):
+        # find user to delete
         user = User.query.filter(User.id == session["user_id"]).first()
         if not user:
             return make_response({"error": "User not found"}, 404)
+        
+        # delete user
         db.session.delete(user)
         db.session.commit()
 
+        # return empty message
         return make_response({"message": "204: No content"}, 204)
 
 api.add_resource(Signup, "/signup", endpoint = "signup")
