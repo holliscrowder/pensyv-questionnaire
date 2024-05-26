@@ -1,0 +1,23 @@
+button {
+    padding: 4px 4px;
+    border: 10px transparent;
+    border-radius: 8px;
+}
+
+/* label {
+    text-align: left;
+    padding: 4px 4px;
+} */
+
+.signup {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    padding: 10px;
+}
+
+input {
+    text-align: left;
+}

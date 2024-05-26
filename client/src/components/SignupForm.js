@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import "./SignupForm.css"
 
 export const SignupForm = () => {
     const [refreshPage, setRefreshPage] = useState(false);
@@ -32,8 +33,8 @@ export const SignupForm = () => {
     });
 
     return (
-        <div>
-            <form onSubmit = {formik.handleSubmit} style = {{ margin: "30px"}}>
+        <div className = "signup">
+            <form onSubmit = {formik.handleSubmit}>
                 <label htmlFor = "email">Email Address</label>
                 <br />
                 <input
