@@ -4,13 +4,14 @@ import "./Signup.css"
 import { useOutletContext } from "react-router-dom";
 
 function Signup() {
+    const [user, setUser] = useOutletContext();
 
     return (
         <>
         <h2>Want to join? Sign up below!</h2>
-        <h3>Enter a valid email and choose a username.</h3>
+        <p>Enter a valid email and choose a username.</p>
         <main>
-            <SignupForm />
+            <SignupForm user={user} setUser={setUser}/>
         </main>
           
         </>

@@ -8,7 +8,6 @@ function Survey() {
         <>
           <main>
             <h2> Daily Mood Questionnaire </h2>
-            <div className = "survey_description"> 
                 <p>The following questions will ask you for a response on a scale of 0-4 based on how you felt  
                     <b> in the past 24 hours:</b>
                 </p>
@@ -27,7 +26,6 @@ function Survey() {
                 <p>
                     0 - Not at All: I <b> never </b> felt like this at any point.
                 </p>
-            </div>
             <SurveyForm />
           </main>
         </>

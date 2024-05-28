@@ -5,17 +5,17 @@
     position: absolute; top: 0; left: 0;
   }
 
-/* .NavBar {
+.NavBar {
     text-align: center;
     padding: 10px 10px 10px 10px;
     background-color: transparent;
-} */
+}
 
 .Outlet {
     padding: 10px 10px 10px 10px;
     /* text-align: left; */
 }
 
-/* div {
+p {
     text-align: left;
-} */
+}

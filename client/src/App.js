@@ -8,6 +8,7 @@ import "./App.css"
 import {LoginForm} from "./components/LoginForm"
 
 function App() {
+  const [user, setUser] = useState(null);
 
   return (
   <div className = "App">
@@ -15,7 +16,12 @@ function App() {
       <NavBar/>
     </div>
     <main className = "Outlet">
-      <Outlet />
+      <Outlet 
+        context = {[
+          user,
+          setUser
+        ]}
+      />
     </main>
   </div>
 );
