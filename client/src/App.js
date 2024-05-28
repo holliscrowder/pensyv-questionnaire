@@ -8,31 +8,14 @@ import "./App.css"
 import {LoginForm} from "./components/LoginForm"
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-
-  function handleLogin() {
-    console.log("toggling login/logout");
-    setIsLoggedIn(!isLoggedIn);
-  }
-
-  function loginUser(user) {
-
-  }
 
   return (
   <div className = "App">
     <div className = "NavBar">
       <NavBar/>
     </div>
-    <div>
-      {{isLoggedIn} ? <LoginForm /> : <p>Please login to access questionnaire.</p>}
-      <button onClick = {handleLogin} type = "button">{isLoggedIn ? "Logout": "Login"}</button>
-    </div>
     <main className = "Outlet">
-      <Outlet 
-        loginUser = {loginUser}
-        />
+      <Outlet />
     </main>
   </div>
 );

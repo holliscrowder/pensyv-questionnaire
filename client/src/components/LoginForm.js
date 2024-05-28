@@ -43,7 +43,7 @@ export const LoginForm = () => {
                     value = {formik.values.email}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.email}</p>
-                <button type = "submit">Submit</button>
+                <button type = "submit">Login</button>
             </form>
         </div>
     )
