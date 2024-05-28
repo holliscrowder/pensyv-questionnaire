@@ -3,22 +3,20 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import "./SignupForm.css"
 
-export const SignupForm = () => {
+export const LoginForm = () => {
     const [refreshPage, setRefreshPage] = useState(false);
 
     const formSchema = yup.object().shape({
-        email: yup.string().email("Invalid email").required("Must enter valid email"),
-        username: yup.string().required("Must enter username").max(50)
+        email: yup.string().email("Invalid email").required("Must enter valid email")
     })
 
     const formik = useFormik({
         initialValues: {
             email: "",
-            username: "",
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("signup", {
+            fetch("login", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -26,6 +24,7 @@ export const SignupForm = () => {
                 body: JSON.stringify(values, null, 2),
             }).then((response) => {
                 if (response.status == 201) {
+                    console.log(response);
                     setRefreshPage(!refreshPage)
                 }
             });
@@ -33,7 +32,7 @@ export const SignupForm = () => {
     });
 
     return (
-        <div className = "signup">
+        <div className = "login">
             <form onSubmit = {formik.handleSubmit}>
                 <label htmlFor = "email">Email Address</label>
                 <br />
@@ -44,17 +43,7 @@ export const SignupForm = () => {
                     value = {formik.values.email}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.email}</p>
-                <label htmlFor = "username">Username</label>
-                <br />
-
-                <input 
-                    id = "username"
-                    name = "username"
-                    onChange = {formik.handleChange}
-                    value = {formik.values.username}
-                />
-                <p style = {{ color: "red" }}> {formik.errors.username}</p>
-                <button type = "submit">Sign Up</button>
+                <button type = "submit">Submit</button>
             </form>
         </div>
     )

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import "./SignupForm.css"
+import "./LeaveForm.css"
 
-export const SignupForm = () => {
-    const [refreshPage, setRefreshPage] = useState(false);
-
+export const LeaveForm = ({setRefreshPage, refreshPage}) => {
+    
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
         username: yup.string().required("Must enter username").max(50)
@@ -18,8 +16,8 @@ export const SignupForm = () => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("signup", {
-                method: "POST",
+            fetch("users", {
+                method: "DELETE",
                 headers: {
                     "Content-type": "application/json"
                 },
@@ -33,7 +31,7 @@ export const SignupForm = () => {
     });
 
     return (
-        <div className = "signup">
+        <div className = "leave">
             <form onSubmit = {formik.handleSubmit}>
                 <label htmlFor = "email">Email Address</label>
                 <br />
@@ -54,7 +52,7 @@ export const SignupForm = () => {
                     value = {formik.values.username}
                 />
                 <p style = {{ color: "red" }}> {formik.errors.username}</p>
-                <button type = "submit">Sign Up</button>
+                <button type = "submit">Leave</button>
             </form>
         </div>
     )

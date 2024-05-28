@@ -1,5 +1,6 @@
 import React from "react";
 import "./Survey.css"
+import { SurveyForm } from "../components/SurveyForm";
 
 function Survey() {
 
@@ -27,7 +28,7 @@ function Survey() {
                     0 - Not at All: I <b> never </b> felt like this at any point.
                 </p>
             </div>
-            
+            <SurveyForm />
           </main>
         </>
       );

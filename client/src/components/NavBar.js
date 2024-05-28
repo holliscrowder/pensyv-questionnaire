@@ -14,6 +14,10 @@ function NavBar() {
       <NavLink to="/survey" className="nav-link">
         Survey
       </NavLink>
+      <NavLink to="/leave" className="nav-link">
+        Leave
+      </NavLink>
+      
     </nav>
   );
 }

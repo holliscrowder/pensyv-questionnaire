@@ -60,8 +60,8 @@ class Login(Resource):
     def post(self):
         try:
             # set session ID
-            username = request.get_json().get("username")
-            user = User.query.filter(User.username == username).first()
+            email = request.get_json().get("email")
+            user = User.query.filter(User.email == email).first()
             session["user_id"] = user.id
 
             # return user info
@@ -70,7 +70,7 @@ class Login(Resource):
         
         # check for errors
         except:
-            return make_response({"error": "Unauthorized username"}, 401)
+            return make_response({"error": "Unauthorized email"}, 401)
         
 class Logout(Resource):
     def delete(self):
@@ -132,6 +132,28 @@ class Users(Resource):
 
         # return empty message
         return make_response({"message": "204: No content"}, 204)
+    
+# class Questionnaires(Resource):
+#     def post(self):
+#         json = request.get_json()
+#         try:
+#             # create new questionnaires
+#             # update session info
+#             session["user_id"] = user.id
+#             db.session.add(user)
+#             db.session.commit()
+            
+#             # return user info
+#             user_response = jsonify(user.to_dict())
+#             return make_response(user_response, 201)
+        
+#         # check for errors
+#         except IntegrityError:
+#             return make_response({"error": "Database relational integrity error"}, 422)
+#         except ValueError:
+#             return make_response({"error": "User information value invalid"}, 422)
+
+
 
 api.add_resource(Signup, "/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/check_session", endpoint = "check_session")

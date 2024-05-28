@@ -2,6 +2,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Survey from "./pages/Survey";
+import Leave from "./pages/Leave";
 
 const routes = [
   {
@@ -19,6 +20,10 @@ const routes = [
       {
         path: "/survey",
         element: <Survey />,
+      },
+      {
+        path: "/leave",
+        element: <Leave />,
       },
     ],
   },

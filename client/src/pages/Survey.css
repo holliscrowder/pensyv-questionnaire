@@ -1,10 +1,9 @@
 .survey_description {
-    text-align: center;
+    text-align: left;
     width: 60%;
     padding: 0 20%;
 }
 
 p {
     text-align: left;
-    padding: 4px;
 }
