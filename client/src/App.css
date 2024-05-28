@@ -19,3 +19,7 @@
 p {
     text-align: left;
 }
+
+button {
+    position: absolute; left: 10%;
+}

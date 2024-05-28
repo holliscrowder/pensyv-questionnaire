@@ -30,8 +30,8 @@ export const SignupForm = ({user, setUser}) => {
                 if (response.status == 201) {
                     return response.json()
                 }
-            }).then((response) => {
-                setUser(response);
+            }).then((data) => {
+                setUser(data);
                 console.log(user);
                 navigate("/survey")
             });

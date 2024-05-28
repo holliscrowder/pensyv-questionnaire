@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./LeaveForm.css"
+import { useNavigate } from "react-router-dom";
 
-export const LeaveForm = ({setRefreshPage, refreshPage}) => {
+export const LeaveForm = () => {
+    const navigate = useNavigate();
     
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
@@ -24,9 +26,14 @@ export const LeaveForm = ({setRefreshPage, refreshPage}) => {
                 body: JSON.stringify(values, null, 2),
             }).then((response) => {
                 if (response.status == 201) {
-                    setRefreshPage(!refreshPage)
+                    return response
                 }
-            });
+                
+                
+            }).then((data) => {
+                navigate("/")
+            })
+            ;
         },
     });
 

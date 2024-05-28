@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./SignupForm.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-export const LoginForm = ({refreshPage, setRefreshPage, user, setUser}) => {
+export const LoginForm = () => {
+    const [user, setUser, isLoggedIn] = useOutletContext();
     // const [refreshPage, setRefreshPage] = useState(false);
     const navigate = useNavigate();
 
@@ -30,10 +31,12 @@ export const LoginForm = ({refreshPage, setRefreshPage, user, setUser}) => {
                     return response.json()
                 }
                 
-            }).then((response) => {
-                setUser(response);
+            }).then((data) => {
+                setUser(data);
                 console.log(user);
-                navigate("/survey")
+                if (data) {
+                    navigate("/survey");
+                }
             }
             )
 
