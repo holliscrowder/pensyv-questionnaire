@@ -1,10 +1,11 @@
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./LeaveForm.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 export const LeaveForm = () => {
     const navigate = useNavigate();
+    const [, , , handleLogout] = useOutletContext();
     
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
@@ -31,7 +32,8 @@ export const LeaveForm = () => {
                 
                 
             }).then((data) => {
-                navigate("/")
+                handleLogout();
+                navigate("/");
             })
             ;
         },

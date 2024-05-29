@@ -15,7 +15,6 @@ function NavBar({user, isLoggedIn}) {
             <NavLink to="/leave" className="nav-link">
             Leave
             </NavLink>
-            {user ? <p>Welcome, {user.username}</p> :<></>}
         </nav>
         :
         <nav className="navbar">

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { useNavigate, useOutletContext } from "react-router-dom"
 
 export const SurveyForm = () => {
     const [questions, setQuestions] = useState("")
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("questions")
@@ -41,7 +43,7 @@ export const SurveyForm = () => {
                     body: JSON.stringify(values, null, 2),
                 }).then((response) => {
                     if (response.status == 201) {
-                        // setRefreshPage(!refreshPage)
+                        navigate("/")
                     }
                 });
             },
@@ -99,6 +101,7 @@ export const SurveyForm = () => {
                     value = {formik.values.question5}
                 />
                 <p style = {{ color: "red" }}>{formik.errors.question5}</p>
+                
                 <button type = "submit">Submit Questionnaire</button>
             </form>
         </div>

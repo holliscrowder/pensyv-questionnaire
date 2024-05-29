@@ -9,6 +9,7 @@
     text-align: center;
     padding: 10px 10px 10px 10px;
     background-color: transparent;
+    font-weight: bold;
 }
 
 .Outlet {
@@ -16,10 +17,21 @@
     /* text-align: left; */
 }
 
-p {
+/* p {
     text-align: left;
+} */
+
+.welcome {
+    position: absolute; left: 10%;
+}
+
+.logout {
+    position: absolute; right: 10%;
 }
 
 button {
-    position: absolute; left: 10%;
+    background-color: rgb(233, 134, 233);
+    /* color: white; */
+    border: 0.5px solid;
+    
 }

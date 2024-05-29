@@ -29,9 +29,9 @@ class Signup(Resource):
             )
 
             # update session info
-            session["user_id"] = user.id
             db.session.add(user)
             db.session.commit()
+            session["user_id"] = user.id
             
             # return user info
             user_response = jsonify(user.to_dict())

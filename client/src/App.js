@@ -14,7 +14,7 @@ function App() {
   const [error, setError] = useState("")
 
   useEffect(() => {
-    fetch("checksession")
+    fetch("check_session")
       .then((response) => {
         if (response.status == 200) {  
           return response.json()
@@ -51,14 +51,16 @@ function App() {
   <div className = "App">
     <div className = "NavBar">
       <NavBar user={user} isLoggedIn={isLoggedIn}/>
-      {isLoggedIn ? <button onClick = {handleLogout}>Logout</button> : <></>}
+      {isLoggedIn ? <button className = "logout" onClick = {handleLogout}>Logout</button> : <></>}
     </div>
+    {user ? <p className = "welcome">Welcome, {user.username}!</p> :<></>}
     <main className = "Outlet">
       <Outlet 
         context = {[
           user,
           setUser,
-          isLoggedIn
+          isLoggedIn,
+          handleLogout
         ]}
       />
     </main>
