@@ -11,12 +11,13 @@
 
 .mood_instructions {
     text-align: left;
-    width: 60%;
-    padding: 0.2% 20%;
+    /* width: 60%; */
+    padding: 0.2% 30%;
 }
 
 .survey {
     text-align: left;
-    width: 60%;
-    padding: 2% 20%;
+    /* width: 60%; */
+    padding: 1%;
+    border-radius: 8px;
 }

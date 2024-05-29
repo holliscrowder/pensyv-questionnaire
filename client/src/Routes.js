@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Survey from "./pages/Survey";
+import Profile from "./pages/Profile";
 import Leave from "./pages/Leave";
 
 const routes = [
@@ -25,6 +26,10 @@ const routes = [
       {
         path: "/survey",
         element: <Survey />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/leave",

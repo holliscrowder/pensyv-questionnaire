@@ -7,25 +7,28 @@ function NavBar({user, isLoggedIn}) {
     return isLoggedIn ?     
         <nav className="navbar">
             <NavLink to="/" className="nav-link">
-            Home
+                Home
             </NavLink>
             <NavLink to="/survey" className="nav-link">
-            Survey
+                Survey
+            </NavLink>
+            <NavLink to="profile" className="nav-link">
+                Profile
             </NavLink>
             <NavLink to="/leave" className="nav-link">
-            Leave
+                Leave
             </NavLink>
         </nav>
         :
         <nav className="navbar">
             <NavLink to="/" className="nav-link">
-            Home
+                Home
             </NavLink>
             <NavLink to="/signup" className="nav-link">
-            Signup
+                Signup
             </NavLink>
             <NavLink to="/login" className="nav-link">
-            Login
+                Login
             </NavLink>
         </nav> 
     ;

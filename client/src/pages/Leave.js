@@ -14,8 +14,8 @@ function Leave() {
                 <p className = "leave"> *** <b className = "leave">NOTE</b> ***</p>
                 <p className = "leave"><b className = "leave">Your data will be permanently deleted with no recovery.</b></p>
                 <p className = "leave">Please re-enter email and username to confirm profile removal.</p>
-                <LeaveForm />
             </div>
+            <LeaveForm />
         </>
       );
 }
