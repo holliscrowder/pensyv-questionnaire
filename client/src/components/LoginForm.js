@@ -33,7 +33,6 @@ export const LoginForm = () => {
                 
             }).then((data) => {
                 setUser(data);
-                console.log(user);
                 if (data) {
                     navigate("/survey");
                 }

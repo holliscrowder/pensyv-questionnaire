@@ -133,25 +133,33 @@ class Users(Resource):
         # return empty message
         return make_response({"message": "204: No content"}, 204)
     
-# class Questionnaires(Resource):
-#     def post(self):
-#         json = request.get_json()
-#         try:
-#             # create new questionnaires
-#             # update session info
-#             session["user_id"] = user.id
-#             db.session.add(user)
-#             db.session.commit()
-            
-#             # return user info
-#             user_response = jsonify(user.to_dict())
-#             return make_response(user_response, 201)
-        
-#         # check for errors
-#         except IntegrityError:
-#             return make_response({"error": "Database relational integrity error"}, 422)
-#         except ValueError:
-#             return make_response({"error": "User information value invalid"}, 422)
+class Questionnaires(Resource):
+    def post(self):
+        if not session['user_id']:
+            return make_response({"error": "Not authorized."}, 401)
+        questionnaires = request.get_json()
+        print(questionnaires)
+        new_questionnaires = []
+        try:
+            i = 1
+            for questionnaire in questionnaires:
+                print(questionnaire)
+                user_id = session["user_id"]
+                question_id = f"{i}"
+                score = questionnaires[questionnaire]
+
+                new_questionnaire = Questionnaire(user_id = int(user_id), question_id = question_id, score = score)
+                db.session.add(new_questionnaire)
+                db.session.commit()
+                new_questionnaires.append(new_questionnaire)
+                i += 1
+            questionnaires_response = jsonify([questionnaire.to_dict() for questionnaire in new_questionnaires])
+            return make_response(questionnaires_response, 201)      
+        # check for errors
+        except IntegrityError:
+            return make_response({"error": "Database relational integrity error"}, 422)
+        except ValueError:
+            return make_response({"error": "User information value invalid"}, 422)
 
 
 
@@ -161,6 +169,7 @@ api.add_resource(Login, "/login", endpoint = "login")
 api.add_resource(Logout, "/logout", endpoint = "logout")
 api.add_resource(Questions, "/questions", endpoint = "questions")
 api.add_resource(Users, "/users", endpoint = "users")
+api.add_resource(Questionnaires, "/questionnaires", endpoint = "questionnaires")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

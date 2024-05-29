@@ -32,16 +32,16 @@ if __name__ == '__main__':
             question_text = "Hey! How did you feel over the past 24 hours on a scale of Awful to Excellent (0 - 4)?"
         )
         question2 = Question(
-            question_text = "In the past 24 hours, I felt in control of my behavior and decisions."
+            question_text = "In the past 24 hours, I felt in control of my behavior and decisions (0 - 4)."
             )
         question3 = Question(
-            question_text = "In the past 24 hours, I felt supported by a sense of connectedness and/or community."
+            question_text = "In the past 24 hours, I felt supported by a sense of connectedness and/or community (0 - 4)."
         )
         question4 = Question(
-            question_text = "In the past 24 hours, I was motivated to make good use of my time, spent it with intention, and lived in accordance with my values."
+            question_text = "In the past 24 hours, I was motivated to make good use of my time, spent it with intention, and lived in accordance with my values (0 - 4)."
         )
         question5 = Question(
-            question_text = "In the past 24 hours, I felt as if I had adequate access to the basic necessities of life, and I was physically and psychologically safe."
+            question_text = "In the past 24 hours, I felt as if I had adequate access to the basic necessities of life, and I was physically and psychologically safe (0 - 4)."
         )
 
         questions = [question1, question2, question3, question4, question5]
