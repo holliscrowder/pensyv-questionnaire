@@ -11,7 +11,7 @@ from sqlalchemy.exc import IntegrityError
 from config import app, db, api
 
 # Add your model imports
-from models import User, Question, Questionnaire
+from models import User, Question, Questionnaire, Submission
 
 # Views go here!
 @app.route('/')
@@ -69,7 +69,8 @@ class Login(Resource):
             return make_response(user_response, 200)
         
         # check for errors
-        except:
+        except Exception as e:
+            print(e)
             return make_response({"error": "Unauthorized email"}, 401)
         
 class Logout(Resource):
@@ -141,19 +142,23 @@ class Questionnaires(Resource):
         print(questionnaires)
         new_questionnaires = []
         try:
+            new_submission = Submission(user_id = session["user_id"])
+            db.session.add(new_submission)
+            db.session.commit()
+
             i = 1
             for questionnaire in questionnaires:
-                print(questionnaire)
-                user_id = session["user_id"]
                 question_id = f"{i}"
                 score = questionnaires[questionnaire]
+                submission_id = new_submission.id
 
-                new_questionnaire = Questionnaire(user_id = int(user_id), question_id = question_id, score = score)
+                new_questionnaire = Questionnaire(question_id = question_id, score = score, submission_id = submission_id)
                 db.session.add(new_questionnaire)
                 db.session.commit()
                 new_questionnaires.append(new_questionnaire)
                 i += 1
             questionnaires_response = jsonify([questionnaire.to_dict() for questionnaire in new_questionnaires])
+
             return make_response(questionnaires_response, 201)      
         # check for errors
         except IntegrityError:

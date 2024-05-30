@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from app import app
-from models import db, User, Question, Questionnaire
+from models import db, User, Question, Questionnaire, Submission
 
 if __name__ == '__main__':
     with app.app_context():
@@ -17,6 +17,7 @@ if __name__ == '__main__':
         User.query.delete()
         Question.query.delete()
         Questionnaire.query.delete()
+        Submission.query.delete()
 
         print("Creating users...")
         user1 = User(username = "user1", email = "user1@gmail.com")
@@ -48,99 +49,119 @@ if __name__ == '__main__':
         db.session.add_all(questions)
         db.session.commit()
 
+        print("Creating Submissions...")
+        # submission 1 - user 1
+        submission1 = Submission(
+            user = user1
+        )
+
+        # submission 2 - user 2
+        submission2 = Submission(
+            user = user2
+        )
+
+        # submission 3 - user 3
+        submission3 = Submission(
+            user = user3
+        )
+
+        submissions = [submission1, submission2, submission3]
+        db.session.add_all(submissions)
+        db.session.commit()
+
         print("Creating Questionnaires...")
 
         # user 1
         questionnaire1 = Questionnaire(
-            user = user1,
             question = question1,
-            score = 0
+            score = 0,
+            submission = submission1
         )
 
         questionnaire2 = Questionnaire(
-            user = user1,
             question = question2,
-            score = 0
+            score = 0,
+            submission = submission1
         )
 
         questionnaire3 = Questionnaire(
-            user = user1,
             question = question3,
-            score = 0
+            score = 0,
+            submission = submission1
         )
 
         questionnaire4 = Questionnaire(
-            user = user1,
             question = question4,
-            score = 0
+            score = 0,
+            submission = submission1
         )
 
         questionnaire5 = Questionnaire(
-            user = user1,
             question = question5,
-            score = 0
+            score = 0,
+            submission = submission1
         )
 
         # user 2
         questionnaire6 = Questionnaire(
-            user = user2,
             question = question1,
-            score = 1
+            score = 1,
+            submission = submission2
         )
 
         questionnaire7 = Questionnaire(
-            user = user2,
             question = question2,
-            score = 1
+            score = 1,
+            submission = submission2
         )
 
         questionnaire8 = Questionnaire(
-            user = user2,
             question = question3,
-            score = 1
+            score = 1,
+            submission = submission2
         )
 
         questionnaire9 = Questionnaire(
-            user = user2,
             question = question4,
-            score = 1
+            score = 1,
+            submission = submission2
         )
 
         questionnaire10 = Questionnaire(
-            user = user2,
             question = question5,
-            score = 1
+            score = 1,
+            submission = submission2
         )
 
         # user 3
         questionnaire11 = Questionnaire(
-            user = user3,
             question = question1,
-            score = 2
+            score = 2,
+            submission = submission3
         )
 
         questionnaire12 = Questionnaire(
-            user = user3,
             question = question2,
-            score = 2
+            score = 2,
+            submission = submission3
         )
 
         questionnaire13 = Questionnaire(
-            user = user3,
             question = question3,
-            score = 2
+            score = 2,
+            submission = submission3
         )
 
         questionnaire14 = Questionnaire(
-            user = user3,
             question = question4,
-            score = 2
+            score = 2,
+            submission = submission3
         )
 
         questionnaire15 = Questionnaire(
-            user = user2,
             question = question5,
-            score = 2
+            score = 2,
+            submission = submission3
         )
 
         questionnaires = [questionnaire1, questionnaire2, questionnaire3, questionnaire4, questionnaire5, questionnaire6, questionnaire7, questionnaire8, questionnaire9, questionnaire10, questionnaire11, questionnaire12, questionnaire13, questionnaire14, questionnaire15]
