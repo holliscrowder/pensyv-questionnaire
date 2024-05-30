@@ -2,45 +2,36 @@
 
 ## Introduction
 
-Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. Privacy is a top priority - users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research.
+Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. Privacy is a top priority. Data are stored on a secure database, and users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research. 
 
 ---
 
-## Introduction
+## Features
 
-Fork and clone this lesson for a template for your full-stack application. Take
-a look at the directory structure before we begin (NOTE: node_modules will be
-generated in a subsequent step):
+### Sign Up
 
-```console
-$ tree -L 2
-$ # the -L argument limits the depth at which we look into the directory structure
-.
-├── CONTRIBUTING.md
-├── LICENSE.md
-├── Pipfile
-├── README.md
-├── client
-│   ├── README.md
-│   ├── package.json
-│   ├── public
-│   └── src
-└── server
-    ├── app.py
-    ├── config.py
-    ├── models.py
-    └── seed.py
-```
+Create a user profile on the sign up page by entering an email and username.
 
-A `migrations` folder will be added to the `server` directory in a later step.
+### Login
 
-The `client` folder contains a basic React application, while the `server`
-folder contains a basic Flask application. You will adapt both folders to
-implement the code for your project .
+Login with the email entered during sign up.
 
-NOTE: If you did not previously install `tree` in your environment setup, MacOS
-users can install this with the command `brew install tree`. WSL and Linux users
-can run `sudo apt-get install tree` to download it as well.
+### Logout
+
+Logout any time from any page via the 'Logout' button.
+
+### Survey
+
+Fill out the daily questionnaire by answering the five questions on a scale of 0-4.
+
+### Profile
+
+View user profile details and update, if desired.
+
+### Leave
+
+Leave alpha testing by entering the associated email and username.
+
 
 ## Where Do I Start?
 
