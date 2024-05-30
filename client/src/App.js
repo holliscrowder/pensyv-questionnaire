@@ -53,7 +53,7 @@ function App() {
       <NavBar user={user} isLoggedIn={isLoggedIn}/>
       {isLoggedIn ? <button className = "logout" onClick = {handleLogout}>Logout</button> : <></>}
     </div>
-    {user ? <p className = "welcome">Welcome, {user.username}!</p> :<></>}
+    {user ? <p className = "welcome">Welcome, <i>{user.username}</i>!</p> :<></>}
     <main className = "Outlet">
       <Outlet 
         context = {[

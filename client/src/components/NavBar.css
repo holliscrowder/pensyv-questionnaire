@@ -21,12 +21,12 @@
     text-decoration: none;
     /* text-align: center; */
     font-size: min(12vw, 16px);
-    color: darkmagenta;
+    color: #360A05;
   }
   
   .navbar > a.active {
     /* background: darkmagenta; */
-    color: rgb(236, 65, 213);
+    color: #dc3895;
   }
 
   .nav-link {
