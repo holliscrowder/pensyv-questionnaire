@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useNavigate, useOutletContext } from "react-router-dom"
 import "./SurveyForm.css";
 
-export const SurveyForm = () => {
+export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
     const [questions, setQuestions] = useState("")
     const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ export const SurveyForm = () => {
                     body: JSON.stringify(values, null, 2),
                 }).then((response) => {
                     if (response.status == 201) {
-                        navigate("/")
+                        setFormSubmitted(true);
                     }
                 });
             },

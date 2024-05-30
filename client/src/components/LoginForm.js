@@ -27,13 +27,15 @@ export const LoginForm = () => {
                 body: JSON.stringify(values, null, 2),
             }).then((response) => {
                 if (response.status == 200) {
-                    // setRefreshPage(!refreshPage);
                     return response.json()
+                }
+                else if (response.status == 401) {
+                    
                 }
                 
             }).then((data) => {
                 setUser(data);
-                if (data) {
+                if (data.username) {
                     navigate("/survey");
                 }
             }

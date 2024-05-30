@@ -69,7 +69,7 @@ class Login(Resource):
             return make_response(user_response, 200)
         
         # check for errors
-        except Exception as e:
+        except AttributeError as e:
             print(e)
             return make_response({"error": "Unauthorized email"}, 401)
         

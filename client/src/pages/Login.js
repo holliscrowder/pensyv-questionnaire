@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LoginForm } from "../components/LoginForm";
-import "./Signup.css"
+import "./Login.css"
 import { useOutletContext } from "react-router-dom";
 
 function Login() {
@@ -9,9 +9,11 @@ function Login() {
 
     return (
         <>
-            <h2>Sign in to access survey questions.</h2>
+            <div className = "login_header">
+                <h2>Login with your user email to access survey questions.</h2>
+            </div>
             <main>
-                <LoginForm user={user} setUser={setUser} />
+                <LoginForm user={user} setUser={setUser} className = "login"/>
             </main>
         </>
       );
