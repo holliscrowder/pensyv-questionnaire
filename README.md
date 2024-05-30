@@ -1,9 +1,8 @@
-# Phase 4 Full-Stack Application Project Template
+# Pensyv Questionnaire
 
-## Learning Goals
+## Introduction
 
-- Discuss the basic directory structure of a full-stack Flask/React application.
-- Carry out the first steps in creating your Phase 4 project.
+Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. Privacy is a top priority - users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research.
 
 ---
 
