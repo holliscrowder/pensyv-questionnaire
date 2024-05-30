@@ -28,6 +28,7 @@ class Signup(Resource):
                 email = json.get("email")
             )
 
+          
             # update session info
             db.session.add(user)
             db.session.commit()
@@ -58,20 +59,20 @@ class CheckSession(Resource):
     
 class Login(Resource):
     def post(self):
-        try:
-            # set session ID
-            email = request.get_json().get("email")
-            user = User.query.filter(User.email == email).first()
+        # set session ID
+        email = request.get_json().get("email")
+        user = User.query.filter(User.email == email).first()
+        if user:
             session["user_id"] = user.id
-
-            # return user info
             user_response = jsonify(user.to_dict())
-            return make_response(user_response, 200)
-        
+            print(user)
+        # return user info
+            response = make_response(user_response, 200)
+            return response
+            
         # check for errors
-        except AttributeError as e:
-            print(e)
-            return make_response({"error": "Unauthorized email"}, 401)
+        else:
+            return make_response({"email_status": "Unauthorized email"}, 401)
         
 class Logout(Resource):
     def delete(self):
