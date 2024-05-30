@@ -8,29 +8,19 @@ Our mission is simple... we want to help you measure what matters most: mental h
 
 ## Features
 
-### Sign Up
+_Sign Up:_ Create a user profile on the sign up page by entering an email and username.
 
-Create a user profile on the sign up page by entering an email and username.
+_Login:_ Login with the email entered during sign up.
 
-### Login
+_Logout:_ Logout any time from any page via the 'Logout' button.
 
-Login with the email entered during sign up.
+_Survey:_ Fill out the daily questionnaire by answering the five questions on a scale of 0-4.
 
-### Logout
+_Profile:_ View user profile details and update, if desired.
 
-Logout any time from any page via the 'Logout' button.
+_Leave:_ Leave alpha testing by entering the associated email and username.
 
-### Survey
-
-Fill out the daily questionnaire by answering the five questions on a scale of 0-4.
-
-### Profile
-
-View user profile details and update, if desired.
-
-### Leave
-
-Leave alpha testing by entering the associated email and username.
+## Demo
 
 
 ## Where Do I Start?
