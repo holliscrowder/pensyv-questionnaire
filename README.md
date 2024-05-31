@@ -35,7 +35,28 @@ _Leave:_ Leave alpha testing by entering the associated email and username.
 7. Access the backend API via proxy through your browser at _http://localhost:5555/_
 
 ## API
-The pensyv questionnaire frontend is connected to the backend via API. The API
+The pensyv questionnaire frontend is connected to the backend via API. API routes and supported methods include:
+
+_signup_:
+  * post()
+
+_check_session_:
+  * get()
+
+_login_:
+  * post()
+
+_logout_:
+  * delete()
+
+_questions_:
+  * get()
+_users_:
+  * patch()
+  * delete()
+
+_questionnaires_:
+  * post()
 
 
 ### Removing Existing Git Configuration
