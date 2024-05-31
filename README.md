@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. Privacy is a top priority. Data are stored on a secure database, and users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research. 
+Our mission is simple... we want to help you measure what matters most: mental health. Pensyv is developing an app to help you log and visualize users' mental health over time. Alpha testers can participate by creating a user profile and filling out a simple daily questionnaire in less time than it takes to listen to their favorite song. User and questionnaire data are posted to the backend, where they are then stored on a secure database. Privacy is a top priority; users can leave alpha testing anytime by removing their profile and all associated data. Future versions of the app will enable users to opt in to data sharing for macro-level research. 
 
 ---
 
@@ -21,13 +21,22 @@ _Profile:_ View user profile details and update, if desired.
 _Leave:_ Leave alpha testing by entering the associated email and username.
 
 ## Demo
+![Demo GIF](client/public/pensyv_quesitonnaire_gif.gif)
 
+## Development Instructions
 
-## Where Do I Start?
+1. Clone the repository to your local machine. From the top-level of the directory:
+2. Install frontend dependencies using _npm install --prefix client_
+3. Run the frontend development server using _npm start --prefix client_
+4. Access the website through your browser at _http://localhost:3000_
+4. Install backend dependencies using _pipenv install --prefix client_
+5. Run the backend virtual environment using _pipenv shell_
+6. Run the backend development server using _python server/app.py_
+7. Access the backend API via proxy through your browser at _http://localhost:5555/_
 
-Just as with your Phase 3 Project, this will likely be one of the biggest
-projects you've undertaken so far. Your first task should be creating a Git
-repository to keep track of your work and roll back any undesired changes.
+## API
+The pensyv questionnaire frontend is connected to the backend via API. The API
+
 
 ### Removing Existing Git Configuration
 
