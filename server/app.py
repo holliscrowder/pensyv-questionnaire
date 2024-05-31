@@ -22,22 +22,30 @@ class Signup(Resource):
     def post(self):
         json = request.get_json()
         try:
-            # create new user
-            user = User(
-                username = json.get("username"),
-                email = json.get("email")
-            )
-
-          
-            # update session info
-            db.session.add(user)
-            db.session.commit()
-            session["user_id"] = user.id
+            user_test_email = User.query.filter_by(email=json.get("email")).first()
+            user_test_username = User.query.filter_by(username=json.get("username")).first()
+            if user_test_email:
+                print(user_test_email)
+                return make_response({"user_status": "Invalid email, please try again."}, 401)
+            elif user_test_username:
+                return make_response({"user_status": "Invalid username, please try again."}, 401)
             
-            # return user info
-            user_response = jsonify(user.to_dict())
-            return make_response(user_response, 201)
-        
+            elif not User.query.filter_by(email = json.get("email")).first() and not User.query.filter_by(username = json.get("username")).first():
+                # create new user
+                user = User(
+                    username = json.get("username"),
+                    email = json.get("email")
+                )
+
+                # update session info
+                db.session.add(user)
+                db.session.commit()
+                session["user_id"] = user.id
+                
+                # return user info
+                user_response = jsonify(user.to_dict())
+                return make_response(user_response, 201)
+            
         # check for errors
         except IntegrityError:
             return make_response({"error": "Database relational integrity error"}, 422)
@@ -77,7 +85,7 @@ class Logout(Resource):
     def delete(self):
         # reset session ID
         if session["user_id"]:
-            session["user_id"] == None
+            session["user_id"] = None
 
             # return empty response
             return make_response({"message": "204: No Content"}, 204)
@@ -130,6 +138,9 @@ class Users(Resource):
         # delete user
         db.session.delete(user)
         db.session.commit()
+
+        # reset session ID
+        session["user_id"] = None
 
         # return empty message
         return make_response({"message": "204: No content"}, 204)

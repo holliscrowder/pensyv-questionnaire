@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./SignupForm.css"
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SignupForm = ({user, setUser}) => {
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const formSchema = yup.object().shape({
         email: yup.string().email("Invalid email").required("Must enter valid email"),
@@ -26,13 +27,21 @@ export const SignupForm = ({user, setUser}) => {
                 },
                 body: JSON.stringify(values, null, 2),
             }).then((response) => {
-                if (response.status == 201) {
-                    return response.json()
+                if (!response.ok) {
+                    return response.json().then((errorData) => {
+                        throw new Error(errorData.user_status || "Network request not ok.")
+                    })
                 }
+                
+                return response.json()
 
             }).then((data) => {
                 setUser(data);
                 navigate("/survey");
+            })
+            .catch((error) => {
+                console.log(error.message);
+                setErrorMessage(error.message || "Invalid email and/or username. Please try again.")
             });
         },
     });
@@ -61,6 +70,7 @@ export const SignupForm = ({user, setUser}) => {
                 <p style = {{ color: "red" }}> {formik.errors.username}</p>
                 <button type = "submit">Sign Up</button>
             </form>
+            {errorMessage && <div className = "error-message">{errorMessage}</div>}
         </div>
     )
 

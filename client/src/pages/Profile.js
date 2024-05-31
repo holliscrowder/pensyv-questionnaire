@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css"
 import { useOutletContext } from "react-router-dom";
 import {ProfileForm} from "../components/ProfileForm";
@@ -7,6 +7,23 @@ import { Link } from "react-router-dom";
 function Profile() {
     const [user, setUser, isLoggedIn] = useOutletContext();
     const [isUpdated, setIsUpdated] = useState(false);
+
+    useEffect(() => {
+        fetch("api/check_session")
+          .then((response) => {
+            if (response.status == 200) {  
+              return response.json()
+            } else {
+              throw response
+            }
+          })
+          .then((data) => {
+            setUser(data)
+        
+          })
+          .catch(e => {
+          });
+      }, []);
 
 
 if (isUpdated == false) {
