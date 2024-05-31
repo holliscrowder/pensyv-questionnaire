@@ -14,7 +14,7 @@ from config import app, db, api
 from models import User, Question, Questionnaire, Submission
 
 # Views go here!
-@app.route('/')
+@app.route('/api')
 def index():
     return '<h1>Project Server</h1>'
 
