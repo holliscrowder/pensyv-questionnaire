@@ -51,7 +51,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
     });
 
     if (!questions.length) {
-        return <p> Loading Questions... </p>
+        return <p className = "loading"> Loading Questions... </p>
     }
 
     return (
@@ -107,8 +107,5 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
             </form>
         </div>
     )
-
-
-    // return (<></>)
 
 }

@@ -74,7 +74,7 @@ function Survey() {
     
     }
     else {
-        return <p>Loading Survey...</p>
+        return <p className = "loading">Loading Survey...</p>
     }
 
     
