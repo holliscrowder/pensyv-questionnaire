@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom/client";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
-import { SignupForm } from "./components/SignupForm";
 import NavBar from "./components/NavBar"
 import "./App.css"
-import {LoginForm} from "./components/LoginForm"
 
 function App() {
   const [user, setUser] = useState(null);

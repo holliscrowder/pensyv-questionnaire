@@ -5,24 +5,6 @@ function Home() {
 
     return (
         <>
-          {/* <div className = "marquee">
-            <ul aria-hidden = "true">
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-            </ul>
-            <ul aria-hidden = "true">
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-                <li className = "pink">DREAM BIG</li>
-                <li className = "purple">STAY DRIVEN</li>
-            </ul>
-          </div> */}
           <div className = "mission">
           <h2>OUR MISSION IS SIMPLE...</h2>
             <p>We want to help you measure what matters: mental health.</p>

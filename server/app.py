@@ -61,11 +61,10 @@ class Login(Resource):
     def post(self):
         # set session ID
         email = request.get_json().get("email")
-        user = User.query.filter(User.email == email).first()
+        user = User.query.filter_by(email=email).first()
         if user:
             session["user_id"] = user.id
             user_response = jsonify(user.to_dict())
-            print(user)
         # return user info
             response = make_response(user_response, 200)
             return response
