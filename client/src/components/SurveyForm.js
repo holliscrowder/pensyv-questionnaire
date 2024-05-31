@@ -7,7 +7,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
     const [questions, setQuestions] = useState("")
 
     useEffect(() => {
-        fetch("questions")
+        fetch("api/questions")
           .then((r) => r.json())
           .then((data) => {
             setQuestions(data);
@@ -34,7 +34,7 @@ export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
         validationSchema: formSchema,
         onSubmit: 
             (values) => {
-                fetch("questionnaires", {
+                fetch("api/questionnaires", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"

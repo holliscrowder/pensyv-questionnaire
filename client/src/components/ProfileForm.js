@@ -19,7 +19,7 @@ export const ProfileForm = ({user, setUser, isUpdated, setIsUpdated}) => {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch("users", {
+            fetch("api/users", {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json"
