@@ -1,6 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import validates
 from config import db
 
 # Models go here!
@@ -14,14 +13,6 @@ class User(db.Model, SerializerMixin):
     # relationships
     submissions = db.relationship("Submission", back_populates = "user", cascade = "all, delete")
     questionnaires = association_proxy("User", "submissions")
-
-    # @validates("username")
-    # def username(self, _, username):
-    #     if not isinstance(username, str):
-    #         raise ValueError("Username must be a string.")
-    #     if len(username) > 100:
-    #         raise ValueError("Username can't be over 100 characters.")
-    #     return username
 
     # serialization rules
     serialize_rules = ("-submissions",)
