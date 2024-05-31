@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { LoginForm } from "../components/LoginForm";
+import React, { useState } from "react";
 import "./Profile.css"
 import { useOutletContext } from "react-router-dom";
 import {ProfileForm} from "../components/ProfileForm";

@@ -7,7 +7,6 @@ function App() {
   const [user, setUser] = useState(null);
   const isLoggedIn = !!user
   const navigate = useNavigate();
-  const [error, setError] = useState("")
 
   useEffect(() => {
     fetch("check_session")

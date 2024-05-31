@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./SignupForm.css"
 import { useNavigate } from "react-router-dom";
 
 export const SignupForm = ({user, setUser}) => {
-    // const [refreshPage, setRefreshPage] = useState(false);
     const navigate = useNavigate();
 
     const formSchema = yup.object().shape({

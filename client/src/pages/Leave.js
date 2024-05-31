@@ -1,12 +1,8 @@
 import { LeaveForm } from "../components/LeaveForm";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Leave.css"
-import { ref } from "yup";
-import { useOutletContext } from "react-router-dom";
 
 function Leave() {
-    const [refreshPage, setRefreshPage] = useState(false);
-
     return (
         <>
             <div className = "leave">

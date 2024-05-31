@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useNavigate, useOutletContext } from "react-router-dom"
 import "./SurveyForm.css";
 
 export const SurveyForm = ({formSubmiteed, setFormSubmitted}) => {
     const [questions, setQuestions] = useState("")
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("questions")

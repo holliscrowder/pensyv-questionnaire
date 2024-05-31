@@ -1,5 +1,4 @@
 .NavBar {
-    /* text-align: center; */
     padding: 10px 10px 10px 10px;
     background-color: transparent;
 }
@@ -17,15 +16,12 @@
     border-color: white;
     border-radius: 8px;
     width: 150px;
-    /* background: rgb(233, 127, 145); */
     text-decoration: none;
-    /* text-align: center; */
     font-size: min(12vw, 16px);
     color: #360A05;
   }
   
   .navbar > a.active {
-    /* background: darkmagenta; */
     color: #dc3895;
   }
 

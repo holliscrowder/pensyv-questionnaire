@@ -23,5 +23,3 @@ function Home() {
 }
 
 export default Home;
-
-{/* <img src = "https://i.ibb.co/J7z9XgX/pensyv-logo-color.png" alt = "pensyv logo" /> */}
