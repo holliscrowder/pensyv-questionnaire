@@ -164,10 +164,6 @@ class Questionnaires(Resource):
         # check for errors
         except IntegrityError:
             return make_response({"error": "Database relational integrity error"}, 422)
-        except ValueError:
-            return make_response({"error": "User information value invalid"}, 422)
-
-
 
 api.add_resource(Signup, "/signup", endpoint = "signup")
 api.add_resource(CheckSession, "/check_session", endpoint = "check_session")
